@@ -1,13 +1,13 @@
 import Head from 'next/head'
-
-import { Inter } from 'next/font/google'
-import styles from '@/styles/Home.module.css'
 import Link from 'next/link'
-import Fruit from '@/components/Fruit'
+import React from 'react'
+import styles from '@/styles/Home.module.css'
+import { Inter } from 'next/font/google'
+import CustomerInput from '@/components/CustomerInput'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({ fruits, toggleFavInFruit }) {
+export default function Customer({ saveNewCustomer }) {
   return (
     <>
       <Head>
@@ -17,16 +17,10 @@ export default function Home({ fruits, toggleFavInFruit }) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
-        <div className={styles.description}>Index Seite</div>
+        <div className={styles.description}>Hello Customer</div>
         <Link href="/favorites">Go to Favorites</Link>
-        <Link href="/customer">Go to Customer</Link>
-        {fruits.map((fruit) => (
-          <Fruit
-            key={fruit.id}
-            fruit={fruit}
-            toggleFavInFruit={toggleFavInFruit}
-          />
-        ))}
+        <Link href="/">Go to home</Link>
+        <CustomerInput saveNewCustomer={saveNewCustomer} />
       </main>
     </>
   )
